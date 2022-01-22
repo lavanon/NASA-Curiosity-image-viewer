@@ -1,0 +1,44 @@
+<h3 class="ui headers">Search for Articles</h3>
+<div id="searchButton" class="ui fluid action input">
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <div  class="ui button">Search</div>
+    <select class="dropdown"  >
+        <option disabled value="">Adjust time span</option>
+        <option value="1">Today</option>
+        <option value="7">This Week</option>
+        <option value="30">This Month</option>
+        <option value="365">This Year</option>
+    </select>
+</div>
+<h3 class="ui headers margin-bottom">Search Results</h3>
+<div>
+    <div class="home">
+        <div *ngIf="(curiosityData$ | async) as curious; else loading"></div>
+        <div *ngFor = "let curious of curiosityData$ | async"> 
+        <div id="article">
+            <a style="vertical-align: top; display: table-cell">
+            <img id="img" [src]="curious.img_src" />
+            </a>
+            <div style="vertical-align: top; display: table-cell">
+            <div class="ui label">{{ curious.earth_date }}</div>
+            <h4 class="headerMargin">
+                <a href="curious.img_src" target="blank" class="author">
+                {{ curious.camera.full_name }}
+                </a>
+            </h4>
+            <div class="text">
+                <strong> By {{ curious.rover.name }} </strong>
+            </div>
+            </div>
+        </div>
+        <hr class="hrPadding" />
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+  The images haven't loaded
+</ng-template>
+
