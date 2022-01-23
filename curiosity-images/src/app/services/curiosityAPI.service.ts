@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { CuriosityDataModel, PhotosModel } from 'src/shared/models/curiosityData.model';
 
 @Injectable({
@@ -18,27 +18,12 @@ export class CuriosityAPIService {
     private http: HttpClient
   ) { }
 
-  // public getCuriosityAPIData(): Observable<CuriosityDataModel[]> {
-  //   const url = `${this.API_BASE_URL}earth_date=2015-6-3${this.API_KEY_PARAMETER}`;
-  //   return this.http.get<Array<any>>(url).pipe(
-  //     tap(data => console.log(data)),
-  //     tap(data => this.curiosityData$.next(data))
-  //   ).subscribe();
-  // }
-
-  public getData(): Observable<CuriosityDataModel[]> {
-    const url = `${this.API_BASE_URL}earth_date=2015-6-3${this.API_KEY_PARAMETER}`;
+  public getData(date: string = "2015-6-3", camera: string = ""): Observable<CuriosityDataModel[]> {
+    const url = `${this.API_BASE_URL}${camera}&earth_date=${date}${this.API_KEY_PARAMETER}`;
     return this.http.get<Array<PhotosModel>>(url)
     .pipe(
       map((data: any) => data.photos)
     );
   }
-
-  // public getSelecterdCuriosityAPIData(id: number | string): void {
-  //   const url = `${this.API_BASE_URL}/earth_date=2015-6-3${this.API_KEY_PARAMETER}`;
-  //   this.http.get<CuriosityDataModel>(url).pipe(
-  //     tap(recipe => this.selected$.next(recipe))
-  //   ).subscribe();
-  // }
 }
 
