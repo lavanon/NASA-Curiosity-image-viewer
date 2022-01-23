@@ -10,6 +10,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,13 @@ import {MatInputModule} from '@angular/material/input';
     BrowserAnimationsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule, MatInputModule, MatFormFieldModule,
+    MatNativeDateModule, 
+    MatInputModule, 
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatCardModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
