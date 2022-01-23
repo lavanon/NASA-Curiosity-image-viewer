@@ -17,10 +17,10 @@ Return the images that curiosity captured on that day.
 Allow the user to filter the images by camera:
 
 Cameras to choose from:
-  Front Hazard Avoidance
-  Rear Hazard Avoidance
-  Mast
-  Navigation Cameras
+  Front Hazard Avoidance | FHAZ
+  Rear Hazard Avoidance | RHAZ
+  Mast | MAST
+  Navigation Cameras | NAVCAM
 
 If no images are available provide a message that says "No available images"
 
