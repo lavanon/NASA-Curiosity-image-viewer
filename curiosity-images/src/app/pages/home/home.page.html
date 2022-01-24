@@ -1,6 +1,5 @@
 <div class="home">
     <h3 class="home__header">Explore your curiosity with Curiosity!</h3>
-    <form (submit)="searchImages()" >
         <mat-form-field class="home__action" appearance="fill">
             <mat-label>Select a day</mat-label>
             <input matInput [matDatepicker]="picker1" [formControl]="date">
@@ -21,8 +20,13 @@
                 <mat-option value="camera=NAVCAM">Navigation Cameras</mat-option>
             </mat-select>
         </mat-form-field>
-        <button class="home__action mat-raised-button" appearance="fill" mat-raised-button color="primary">Search</button>
-    </form>
+        <button 
+            class="home__action mat-raised-button" 
+            mat-raised-button color="primary" 
+            (click)="searchImages()"
+        >
+            Search
+        </button>
     <h2 class="home__body__header">Search Results</h2>
     <mat-card *ngIf="!doWeHaveImages">There does not seem to be any images.</mat-card>
     <div *ngFor = "let curious of curiosityData$ | async"> 
