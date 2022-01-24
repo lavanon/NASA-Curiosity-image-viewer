@@ -1,24 +1,24 @@
 .landing-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: whitesmoke;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &__landing-image {
-    height:76px;
-    border-radius: 24px;
-    margin-bottom: 24px;
-    cursor: pointer;
-  }
-  &__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: whitesmoke;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+
+    &__landing-image {
+        height:76px;
+        border-radius: 24px;
+        margin-bottom: 24px;
+        cursor: pointer;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
