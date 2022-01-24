@@ -4,7 +4,7 @@ import { HomePage } from './pages/home/home.page';
 import { LandingPage } from './pages/landing/landing.page';
 
 const routes: Routes = [
-  { path: '', component: HomePage },
+  { path: '', component: LandingPage },
   {
     path: 'landing-page',
     component: LandingPage,
