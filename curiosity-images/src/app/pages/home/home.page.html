@@ -1,16 +1,16 @@
 <div class="home">
-    <h3 >Explore your curiosity with Curiosity!</h3>
-    <form  [formGroup]="form" (submit)="onSavePost()" >
-        <mat-form-field class="margin-right" appearance="fill">
+    <h3 class="home__header">Explore your curiosity with Curiosity!</h3>
+    <form (submit)="searchImages()" >
+        <mat-form-field class="home__action" appearance="fill">
             <mat-label>Select a day</mat-label>
             <input matInput [matDatepicker]="picker1" [formControl]="date">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
-        <mat-form-field class="margin-right" appearance="fill">
+        <mat-form-field class="home__action" appearance="fill">
             <mat-label>Select a camera view</mat-label>
             <mat-select 
-                [(value)]="selected" 
+                [(value)]="cameraSelected" 
                 type="text" 
                 >
                 <mat-option disabled value="">Select a camera view</mat-option>
@@ -21,27 +21,24 @@
                 <mat-option value="camera=NAVCAM">Navigation Cameras</mat-option>
             </mat-select>
         </mat-form-field>
-        <button class="mat-raised-button" appearance="fill" mat-raised-button color="primary">Search</button>
+        <button class="home__action mat-raised-button" appearance="fill" mat-raised-button color="primary">Search</button>
     </form>
-    <h2 class="ui headers margin-bottom">Search Results</h2>
+    <h2 class="home__body__header">Search Results</h2>
     <mat-card *ngIf="!doWeHaveImages">There does not seem to be any images.</mat-card>
     <div *ngFor = "let curious of curiosityData$ | async"> 
-        <div id="article">
-            <a style="vertical-align: top; display: table-cell">
-                <img id="img" [src]="curious.img_src" />
+        <mat-card class="home__body__card">
+            <a class="home__body__card__aside" [href]="curious.img_src" target="_blank">
+                <img class="home__body__card__image" [src]="curious.img_src" />
             </a>
-            <div style="vertical-align: top; display: table-cell">
+            <div class="home__body__card__aside">
                 <div class="ui label">{{ curious.earth_date }}</div>
-                <h4 class="headerMargin">
-                    <a href="curious.img_src" target="blank" class="author">
+                <h4 class="home__body__card__text">
+                    <a [href]="curious.img_src" target="_blank">
                     {{ curious.camera.full_name }}
                     </a>
                 </h4>
-                <div class="text">
-                    <strong> By {{ curious.rover.name }} </strong>
-                </div>
+                <strong> By {{ curious.rover.name }} </strong>
             </div>
-        </div>
-        <hr class="hrPadding" />
+        </mat-card>
     </div>
 </div>
