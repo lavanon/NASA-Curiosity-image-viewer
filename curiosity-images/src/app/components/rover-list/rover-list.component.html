@@ -1,0 +1,9 @@
+<h2>Search Results</h2>
+<div class="rover-list" *ngIf="doWeHaveImages else noImages">
+    <div class="rover-list__item" *ngFor="let rover of rovers">
+      <app-rover-list-item [rover]="rover"></app-rover-list-item>
+    </div>
+</div>
+<ng-template #noImages>
+  <mat-card class="rover-list__noImages" >There does not seem to be any images.</mat-card>
+</ng-template>

@@ -13,11 +13,15 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import { RoverListComponent } from './components/rover-list/rover-list.component';
+import { RoverListItemComponent } from './components/rover-list-item/rover-list-item.component';
 @NgModule({
   declarations: [
     AppComponent,
     LandingPage,
     HomePage,
+    RoverListItemComponent,
+    RoverListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,8 @@ import {MatCardModule} from '@angular/material/card';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+
 
   ],
   providers: [],

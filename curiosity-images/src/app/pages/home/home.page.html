@@ -1,48 +1,24 @@
 <div class="home">
     <h3 class="home__header">Explore your curiosity with Curiosity!</h3>
-        <mat-form-field class="home__action" appearance="fill">
-            <mat-label>Select a day</mat-label>
-            <input matInput [matDatepicker]="picker1" [formControl]="date">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="home__action" appearance="fill">
-            <mat-label>Select a camera view</mat-label>
-            <mat-select 
-                [(value)]="cameraSelected" 
-                type="text" 
-                >
-                <mat-option disabled value="">Select a camera view</mat-option>
-                <mat-option value="">All cameras</mat-option>
-                <mat-option value="camera=FHAZ">Front Hazard Avoidance</mat-option>
-                <mat-option value="camera=RHAZ">Rear Hazard Avoidance</mat-option>
-                <mat-option value="camera=MAST">Mast</mat-option>
-                <mat-option value="camera=NAVCAM">Navigation Cameras</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <button 
-            class="home__action mat-raised-button" 
-            mat-raised-button color="primary" 
-            (click)="searchImages()"
-        >
-            Search
-        </button>
-    <h2 class="home__body__header">Search Results</h2>
-    <mat-card *ngIf="!doWeHaveImages">There does not seem to be any images.</mat-card>
-    <div *ngFor = "let curious of curiosityData$ | async"> 
-        <mat-card class="home__body__card">
-            <a class="home__body__card__aside" [href]="curious.img_src" target="_blank">
-                <img class="home__body__card__image" [src]="curious.img_src" />
-            </a>
-            <div class="home__body__card__aside">
-                <div class="ui label">{{ curious.earth_date }}</div>
-                <h4 class="home__body__card__text">
-                    <a [href]="curious.img_src" target="_blank">
-                    {{ curious.camera.full_name }}
-                    </a>
-                </h4>
-                <strong> By {{ curious.rover.name }} </strong>
-            </div>
-        </mat-card>
-    </div>
+    <mat-form-field class="home__action">
+        <mat-label>Select a day</mat-label>
+        <input matInput [matDatepicker]="picker1" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="home__action">
+        <mat-label>Select a camera view</mat-label>
+        <mat-select [(value)]="cameraSelected" type="text" >
+            <mat-option disabled value="">Select a camera view</mat-option>
+            <mat-option value="">All cameras</mat-option>
+            <mat-option value="camera=FHAZ">Front Hazard Avoidance</mat-option>
+            <mat-option value="camera=RHAZ">Rear Hazard Avoidance</mat-option>
+            <mat-option value="camera=MAST">Mast</mat-option>
+            <mat-option value="camera=NAVCAM">Navigation Cameras</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button class="home__action mat-raised-button" (click)="searchImages()">
+        Search
+    </button>
+    <app-rover-list [rovers]="curiosityData$ | async" [doWeHaveImages]="doWeHaveImages" ></app-rover-list>
 </div>

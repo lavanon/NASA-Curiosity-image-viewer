@@ -1,0 +1,15 @@
+
+<mat-card class="rover-list-item__card">
+    <a class="rover-list-item__card__aside" [href]="rover.img_src" target="_blank">
+        <img class="rover-list-item__card__image" [src]="rover.img_src" />
+    </a>
+    <div class="rover-list-item__card__aside">
+        <div class="ui label">{{ rover.earth_date }}</div>
+        <h4 class="rover-list-item__card__text">
+            <a [href]="rover.img_src" target="_blank">
+            {{ rover.camera.full_name }}
+            </a>
+        </h4>
+        <strong> By {{ rover.rover.name }} </strong>
+    </div>
+</mat-card>
